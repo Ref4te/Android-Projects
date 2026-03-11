@@ -20,6 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:authorities="akzhol.com.server.studentsprovider"
+            android:name="com.server.provider.AppProvider"
+            android:exported="false"/>
+
     </application>
 
 </manifest>
