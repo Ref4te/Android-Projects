@@ -1,0 +1,28 @@
+# IDE - Android Studio / IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Android - Build and sensitive files
+build/
+bin/
+gen/
+local.properties
+.gradle/
+Captures/
+.externalNativeBuild/
+.cxx/
+
+# Flutter - specific
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+
+# macOS - System files
+.DS_Store
+.AppleDouble
+.LSOverride
