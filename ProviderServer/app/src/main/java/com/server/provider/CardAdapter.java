@@ -17,13 +17,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.StudentViewHol
     public CardAdapter(ArrayList<Student> studentList) {
         this.StudentList = studentList;
     }
-
-
-//    public void setNoteList(ArrayList<Note> noteList) {
-//        this.noteList = noteList;
-//        notifyDataSetChanged();
-//    }
-
     @NonNull
     @Override
     public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
