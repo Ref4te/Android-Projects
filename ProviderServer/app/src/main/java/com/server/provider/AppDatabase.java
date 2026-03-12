@@ -17,7 +17,7 @@ public class AppDatabase extends SQLiteOpenHelper {
 
     static AppDatabase getInstance(Context context){
         if(instance == null){
-            instance = new AppDatabase(context);
+            instance = new AppDatabase(context.getApplicationContext());
         }
         return instance;
     }

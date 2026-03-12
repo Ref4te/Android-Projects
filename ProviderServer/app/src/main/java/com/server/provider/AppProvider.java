@@ -85,6 +85,7 @@ public class AppProvider extends ContentProvider {
             recordId = db.insert(StudentsContract.TABLE_NAME, null, values);
             if (recordId > 0) {
                 returnUri = StudentsContract.buildStudentUri(recordId);
+                getContext().getContentResolver().notifyChange(uri, null); // уведомление об изменении
             } else {
                 throw new SQLException("Failed to insert: " + uri.toString());
             }

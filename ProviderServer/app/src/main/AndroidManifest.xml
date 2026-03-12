@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <permission
+        android:name="akzhol.com.server.FULL_ACCESS"
+        android:protectionLevel="normal" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProviderServer">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -24,7 +28,8 @@
         <provider
             android:authorities="akzhol.com.server.studentsprovider"
             android:name="com.server.provider.AppProvider"
-            android:exported="false"/>
+            android:exported="true"
+            android:permission="akzhol.com.server.FULL_ACCESS" />
 
     </application>
 
