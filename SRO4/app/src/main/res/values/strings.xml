@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SRO4</string>
+
+    <string-array name="groups_array">
+        <item>ВТиПО-35</item>
+        <item>ВТиПО-33</item>
+        <item>ИС-37</item>
+    </string-array>
+</resources>

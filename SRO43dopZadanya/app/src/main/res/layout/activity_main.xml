@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="3"
+        android:columnCount="3">
+
+        <ImageButton
+            android:id="@+id/cell0"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_empty"
+            android:background="@drawable/cell_bg"
+            android:padding="16dp"
+            android:scaleType="centerInside" />
+
+
+        <ImageButton
+            android:id="@+id/cell1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_empty"
+            android:background="@drawable/cell_bg"
+            android:padding="16dp"
+            android:scaleType="centerInside" />
+
+        <ImageButton
+            android:id="@+id/cell2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_empty"
+            android:background="@drawable/cell_bg"
+            android:padding="16dp"
+            android:scaleType="centerInside" />
+
+        <ImageButton
+            android:id="@+id/cell3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_empty"
+            android:background="@drawable/cell_bg"
+            android:padding="16dp"
+            android:scaleType="centerInside" />
+
+        <ImageButton
+            android:id="@+id/cell4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_empty"
+            android:background="@drawable/cell_bg"
+            android:padding="16dp"
+            android:scaleType="centerInside" />
+
+        <ImageButton
+            android:id="@+id/cell5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_empty"
+            android:background="@drawable/cell_bg"
+            android:padding="16dp"
+            android:scaleType="centerInside" />
+
+        <ImageButton
+            android:id="@+id/cell6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_empty"
+            android:background="@drawable/cell_bg"
+            android:padding="16dp"
+            android:scaleType="centerInside" />
+
+        <ImageButton
+            android:id="@+id/cell7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_empty"
+            android:background="@drawable/cell_bg"
+            android:padding="16dp"
+            android:scaleType="centerInside" />
+
+        <ImageButton
+            android:id="@+id/cell8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_empty"
+            android:background="@drawable/cell_bg"
+            android:padding="16dp"
+            android:scaleType="centerInside" />
+    </GridLayout>
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Новая игра" />
+</LinearLayout>
