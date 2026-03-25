@@ -84,15 +84,14 @@ public class GalleryActivity extends AppCompatActivity {
             Toast.makeText(this, "Ошибка загрузки фотографий", Toast.LENGTH_SHORT).show();
         }
 
-        // После того как список загружен, показываем первую фотографию
         if (!photoUris.isEmpty()) {
-            currentPhotoIndex = 0; // Начинаем с первой
+            currentPhotoIndex = 0;
             updatePhotoDisplay();
         } else {
             // Если фоток нет, пишем об этом
             numeration.setText("0 / 0");
             Toast.makeText(this, "Галерея пуста", Toast.LENGTH_LONG).show();
-            // Можно поставить стандартную заглушку в ImageView
+            //заглушка
             photoView.setImageResource(android.R.drawable.ic_menu_gallery);
         }
     }
@@ -108,31 +107,26 @@ public class GalleryActivity extends AppCompatActivity {
     private void showPreviousPhoto() {
         if (photoUris.isEmpty()) return;
 
-        // Уменьшаем индекс на 1
         currentPhotoIndex--;
 
-        // Если ушли меньше нуля, перекидываем в конец списка (циклическая галерея)
+        // цикл
         if (currentPhotoIndex < 0) {
             currentPhotoIndex = photoUris.size() - 1;
         }
 
-        // Обновляем экран
         updatePhotoDisplay();
     }
 
-    // Логика кнопки "Вперед"
     private void showNextPhoto() {
         if (photoUris.isEmpty()) return;
 
-        // Увеличиваем индекс на 1
         currentPhotoIndex++;
 
-        // Если индекс стал равен размеру списка, перекидываем в начало
+        // цикл
         if (currentPhotoIndex >= photoUris.size()) {
             currentPhotoIndex = 0;
         }
 
-        // Обновляем экран
         updatePhotoDisplay();
     }
 
