@@ -8,50 +8,55 @@ import android.util.Log;
 
 public class MyService extends Service {
     final String TAG = "MyService";
-    public MyService() {
-    }
-
+    private boolean isRunning = false;
     private final IBinder binder = new LocalBinder();
 
     public class LocalBinder extends Binder {
-        MyService getService() {
-            return MyService.this;
-        }
+        MyService getService() { return MyService.this; }
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d(TAG, "onCreate");
+        Log.d(TAG, "Service: onCreate");
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "onStartCommand");
-        return super.onStartCommand(intent, flags, startId);
+        Log.d(TAG, "Service: onStartCommand");
+
+        if (!isRunning) {
+            isRunning = true;
+            new Thread(() -> {
+                while (isRunning) {
+                    try {
+                        Log.d(TAG, "Service: выполняет фоновую работу...");
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        break;
+                    }
+                }
+            }).start();
+        }
+        return START_STICKY;
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d(TAG, "onBind");
-        return binder; // Возвращаем binder вместо ошибки
+        Log.d(TAG, "Service: onBind");
+        return binder;
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-        Log.d(TAG, "onUnbind");
+        Log.d(TAG, "Service: onUnbind");
         return super.onUnbind(intent);
     }
 
     @Override
-    public void onRebind(Intent intent) {
-        super.onRebind(intent);
-        Log.d(TAG, "onRebind");
-    }
-
-    @Override
     public void onDestroy() {
+        Log.d(TAG, "Service: onDestroy");
+        isRunning = false;
         super.onDestroy();
-        Log.d(TAG, "onDestroy");
     }
 }

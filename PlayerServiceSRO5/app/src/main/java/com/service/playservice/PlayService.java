@@ -14,6 +14,7 @@ public class PlayService extends Service {
 
     private MediaPlayer mPlayer;
     private List<Track> playlist;
+    private boolean isPrepared = false;
     private int currentTrackIndex = 0;
     private boolean isLooping = false;
     private boolean shouldStartAfterPrepare = false;
@@ -55,6 +56,12 @@ public class PlayService extends Service {
                 .setUsage(AudioAttributes.USAGE_MEDIA)
                 .build());
 
+        mPlayer.setOnErrorListener((mp, what, extra) -> {
+            // Если произошла ошибка (например, нет интернета)
+            mp.reset();
+            return true; // предотвращает вызов onCompletionListener
+        });
+
         mPlayer.setOnCompletionListener(mp -> {
             if (isLooping) {
                 mp.start();
@@ -64,6 +71,7 @@ public class PlayService extends Service {
         });
 
         mPlayer.setOnPreparedListener(mp -> {
+            isPrepared = true;
             if (shouldStartAfterPrepare) {
                 mp.start();
             }
@@ -81,6 +89,7 @@ public class PlayService extends Service {
 
     private void prepareTrack(boolean start) {
         if (currentTrackIndex < 0 || currentTrackIndex >= playlist.size()) return;
+        isPrepared = false;
         try {
             shouldStartAfterPrepare = start;
             mPlayer.reset();
@@ -126,18 +135,24 @@ public class PlayService extends Service {
 
     public int getDuration() {
         try {
-            return mPlayer != null ? mPlayer.getDuration() : 0;
-        } catch (Exception e) {
+            if (mPlayer != null && isPrepared) {
+                return mPlayer.getDuration();
+            }
+        } catch (IllegalStateException e) {
             return 0;
         }
+        return 0;
     }
 
     public int getCurrentPosition() {
         try {
-            return mPlayer != null ? mPlayer.getCurrentPosition() : 0;
-        } catch (Exception e) {
+            if (mPlayer != null && isPrepared) {
+                return mPlayer.getCurrentPosition();
+            }
+        } catch (IllegalStateException e) {
             return 0;
         }
+        return 0;
     }
 
     public void seekTo(int pos) {
